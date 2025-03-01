@@ -256,9 +256,9 @@ export default function Home() {
                   ))}
                 </div>
                 
-                <button className="w-full py-2 rounded-md text-sm font-medium bg-pink-500/20 text-pink-400 hover:bg-pink-500/40 transition-colors">
+                <Link href={"/summary"} className="w-full py-2 rounded-md text-sm font-medium bg-pink-500/20 text-pink-400 hover:bg-pink-500/40 transition-colors">
                   VIEW ALL SUMMARIES
-                </button>
+                </Link>
               </div>
             </div>
           </div>

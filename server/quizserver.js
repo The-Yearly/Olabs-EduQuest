@@ -42,6 +42,7 @@ io.on("connection", (socket) => {
         if (!rooms[roomId]) return;
     
         const currentQuestion = rooms[roomId].quizQuestions[rooms[roomId].currentQuestionIndex];
+        console.log(answer,currentQuestion.answer)
         if (answer === currentQuestion.answer) {
             rooms[roomId].players[socket.id].score += 10;
         }
@@ -61,26 +62,6 @@ io.on("connection", (socket) => {
     });
 });
 
-function evaluateAnswers(roomId) {
-    if (!roomId || !rooms[roomId]) return;
-
-    let room = rooms[roomId];
-
-    Object.keys(room.currentAnswers).forEach(playerId => {
-        const answer = room.currentAnswers[playerId];
-        const correctAnswer = room.quizQuestions[room.currentQuestionIndex].answer;
-
-        if (!room.players[playerId]) {
-            console.error(`Error: Player ${playerId} not found. Initializing...`);
-            room.players[playerId] = { name: "Unknown", score: 0 }; // Initialize missing player
-        }
-
-        if (answer === correctAnswer) {
-            room.players[playerId].score += 10;
-            console.log(`✅ Player ${playerId} got it right! New Score: ${room.players[playerId].score}`);
-        }
-    });
-}
 
 
 
@@ -95,8 +76,6 @@ function startQuestion(roomId) {
     });
     io.to(roomId).emit("QUESTION", room.quizQuestions[room.currentQuestionIndex]);
     setTimeout(() => {
-        evaluateAnswers(roomId);
-
         if (room.currentQuestionIndex < room.quizQuestions.length - 1) {
             room.currentQuestionIndex++;
             startQuestion(roomId);

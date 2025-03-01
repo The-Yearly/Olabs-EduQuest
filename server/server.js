@@ -1,9 +1,7 @@
-// server/server.js
 const express = require('express');
 const cors = require('cors');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const { YoutubeTranscript } = require('youtube-transcript');
-
 
 const app = express();
 app.use(cors());
@@ -12,19 +10,18 @@ app.use(express.json());
 const genAI = new GoogleGenerativeAI("AIzaSyBBm2aTU0Le0nFQykj_hbirRhNCW73Yl4g");
 
 async function generateSummary(transcript) {
-  const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
-  const prompt = ('Summarize the following YouTube video transcript:\n\n${transcript}');
+  const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro-latest' }); // Use Gemini 2
+  const prompt = `Summarize the following YouTube video transcript:\n\n${transcript}`;
 
   const result = await model.generateContent(prompt);
-  const response = await result.response;
-  const text = response.text();
+  const text = result.response.text(); // Ensure correct method usage
   return text;
 }
 
 function extractVideoId(url) {
-  const regExp = /^.((http:\/\/googleusercontent\.com\/youtube\.com\/5\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]).*/;
+  const regExp = /^.*(youtu.be\/|v\/|\/u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]{11}).*/;
   const match = url.match(regExp);
-  return (match && match[7].length == 11) ? match[7] : false;
+  return match ? match[2] : false;
 }
 
 app.post('/summarize', async (req, res) => {
@@ -46,7 +43,6 @@ app.post('/summarize', async (req, res) => {
     res.json({ summary });
   } catch (error) {
     console.error('Error processing request:', error);
-    console.error(error);
     res.status(500).json({ error: 'Failed to summarize video.' });
   }
 });
@@ -64,7 +60,7 @@ app.post('/transcript', async (req, res) => {
     }
 
     const transcriptArray = await YoutubeTranscript.fetchTranscript(videoId);
-    const transcript = transcriptArray.map((item) => item.text).join('\n\n'); // Add newlines for readability
+    const transcript = transcriptArray.map((item) => item.text).join('\n\n');
 
     res.json({ transcript });
   } catch (error) {
@@ -73,7 +69,7 @@ app.post('/transcript', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
-  console.log('Server running on port ${PORT}');
+  console.log(`Server running on port ${PORT}`);
 });
