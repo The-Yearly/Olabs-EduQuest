@@ -1,7 +1,7 @@
 'use client'
 import { useState,useEffect } from "react";
 export default function Youtube(){
-  const  YOUTUBE_API_KEY ="AIzaSyAO9Dpxy6clZ1xDBnTODU4qoy9F_AjZRGU"
+  const  YOUTUBE_API_KEY ="AIzaSyCc7D_r5S79AI98oKq-Vh3MwsL8jkjOiy8"
   const [data,setData]=useState(null)
   const [search,setSearch]=useState("deep learning")
   useEffect(()=>{const fetchdata=async()=>{
