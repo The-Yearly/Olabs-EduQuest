@@ -15,7 +15,7 @@ export default function NavBar(){
             </div>
             
             <nav className="hidden md:flex space-x-8">
-              {['home', 'videos', 'quiz', 'analytics', 'about'].map((tab) => (
+              {['home', 'videos', 'quiz', 'summary', 'about'].map((tab) => (
                 <Link 
                   href={(tab=="home")?"/":tab}
                   key={tab}

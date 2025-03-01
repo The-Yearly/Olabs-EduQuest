@@ -4,7 +4,7 @@ import Link from 'next/link';
 import ChatBot from './chat/ChatBot';
 import { motion } from 'framer-motion';
 const subjects = [
-  { id: 'physics', name: 'PHYSICS', icon: '⚛', color: '#00f3ff' },
+  { id: 'physics', name: 'PHYSICS', icon: '⚛', color: '#00f3ff',},
   { id: 'chemistry', name: 'CHEMISTRY', icon: '🧪', color: '#bf00ff' },
   { id: 'biology', name: 'BIOLOGY', icon: '🧬', color: '#00d964' },
   { id: 'maths', name: 'MATHEMATICS', icon: '📐', color: '#ff00aa' },
@@ -97,8 +97,8 @@ export default function Home() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             {subjects.map((subject) => (
+              <Link href={"/"+subject.id} key={subject.id}>
               <motion.div
-                key={subject.id}
                 variants={item}
                 whileHover={{ 
                   y: -5, 
@@ -144,6 +144,7 @@ export default function Home() {
                   </span>
                 </div>
               </motion.div>
+              </Link>
             ))}
           </motion.div>
         </div>
