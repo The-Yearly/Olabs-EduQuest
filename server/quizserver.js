@@ -20,9 +20,50 @@ io.on("connection", (socket) => {
                 currentQuestionIndex: 0,
                 currentAnswers: {},
                 quizQuestions: [
-                    { question: "What is the capital of France?", options: ["Berlin", "Madrid", "Paris", "Rome"], answer: "Paris" },
-                    { question: "Which planet is known as the Red Planet?", options: ["Earth", "Mars", "Jupiter", "Saturn"], answer: "Mars" },
-                    { question: "What is 5 + 7?", options: ["10", "12", "14", "16"], answer: "12" }
+                    {           question: "What is the unit of electric current?", 
+                        options: ["Volt", "Ohm", "Ampere", "Watt"], 
+                        answer: "Ampere" 
+                    },
+                    { 
+                        question: "Which of the following is a scalar quantity?", 
+                        options: ["Velocity", "Force", "Acceleration", "Energy"], 
+                        answer: "Energy" 
+                    },
+                    { 
+                        question: "What is the speed of light in a vacuum?", 
+                        options: ["3 × 10^8 m/s", "2 × 10^8 m/s", "1.5 × 10^8 m/s", "4 × 10^8 m/s"], 
+                        answer: "3 × 10^8 m/s" 
+                    },
+                    { 
+                        question: "What is the chemical symbol for Gold?", 
+                        options: ["Ag", "Au", "Pb", "Fe"], 
+                        answer: "Au" 
+                    },
+                    { 
+                        question: "Which gas is most abundant in Earth's atmosphere?", 
+                        options: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"], 
+                        answer: "Nitrogen" 
+                    },
+                    { 
+                        question: "What is the pH value of pure water?", 
+                        options: ["5", "7", "9", "11"], 
+                        answer: "7" 
+                    },
+                    { 
+                        question: "What is the derivative of sin(x)?", 
+                        options: ["cos(x)", "-cos(x)", "tan(x)", "-sin(x)"], 
+                        answer: "cos(x)" 
+                    },
+                    { 
+                        question: "What is the value of 2^5?", 
+                        options: ["16", "32", "64", "128"], 
+                        answer: "32" 
+                    },
+                    { 
+                        question: "What is the area of a triangle with base 10 cm and height 5 cm?", 
+                        options: ["25 cm²", "50 cm²", "15 cm²", "30 cm²"], 
+                        answer: "25 cm²" 
+                    }
                 ]
             };
         }

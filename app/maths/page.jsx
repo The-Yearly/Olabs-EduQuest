@@ -1,50 +1,50 @@
-'use client';
+'use client'
 import React, { useState } from "react";
 
-const physicsExperiments = [
+const mathExperiments = [
   {
-    title: "Ohm's Law Experiment",
-    aim: "To verify Ohm’s Law by calculating resistance.",
-    apparatus: "Battery, Resistor, Ammeter, Voltmeter, Wires",
-    procedure: "1. Connect the circuit with the given components.\n2. Measure the voltage and current.\n3. Use V=IR to calculate resistance.",
-    observation: "As voltage increases, current also increases proportionally.",
-    result: "Ohm’s Law is verified."
+    title: "Pythagoras Theorem",
+    aim: "To verify the Pythagoras theorem using a right-angled triangle.",
+    apparatus: "Graph paper, Ruler, Pencil",
+    procedure: "1. Draw a right-angled triangle on graph paper.\n2. Measure the lengths of all three sides.\n3. Verify if a² + b² = c².",
+    observation: "The sum of the squares of the two shorter sides equals the square of the hypotenuse.",
+    result: "Pythagoras theorem is verified."
   },
   {
-    title: "Newton’s Second Law",
-    aim: "To verify Newton’s Second Law using a pulley system.",
-    apparatus: "Pulley, Weights, Timer",
-    procedure: "1. Attach a weight to the pulley.\n2. Release it and measure time.\n3. Calculate acceleration using F=ma.",
-    observation: "Acceleration is proportional to applied force.",
-    result: "Newton’s Second Law is verified."
+    title: "Area of a Circle",
+    aim: "To derive the formula for the area of a circle.",
+    apparatus: "Paper, Compass, Ruler, Scissors",
+    procedure: "1. Draw a circle and cut it into sectors.\n2. Rearrange the sectors into a near-rectangular shape.\n3. Observe that the height is the radius and the width is half the circumference.",
+    observation: "The shape approaches a rectangle with height r and width πr.",
+    result: "The formula A = πr² is derived."
   },
   {
-    title: "Reflection of Light",
-    aim: "To study the laws of reflection.",
-    apparatus: "Mirror, Light Source, Protractor",
-    procedure: "1. Direct light onto a mirror.\n2. Measure incident and reflected angles.\n3. Compare values.",
-    observation: "Incident angle equals reflected angle.",
-    result: "Laws of reflection hold true."
+    title: "Probability Experiment",
+    aim: "To understand probability using coin tosses.",
+    apparatus: "A fair coin",
+    procedure: "1. Toss the coin 50 times.\n2. Record the number of heads and tails.\n3. Compare the experimental probability with the theoretical probability.",
+    observation: "The proportion of heads and tails is close to 50%.",
+    result: "Experimental probability approaches theoretical probability with more trials."
   },
   {
-    title: "Pendulum Motion",
-    aim: "To study the motion of a simple pendulum.",
-    apparatus: "String, Bob, Stopwatch",
-    procedure: "1. Displace the pendulum.\n2. Measure time for 10 oscillations.\n3. Calculate time period.",
-    observation: "Time period depends on length, not mass.",
-    result: "Pendulum motion follows simple harmonic motion."
+    title: "Surface Area of a Cylinder",
+    aim: "To derive the formula for the surface area of a cylinder.",
+    apparatus: "Chart paper, Scissors, Glue",
+    procedure: "1. Cut out a rectangle and two circles.\n2. Wrap the rectangle around to form a cylinder.\n3. Observe how the areas sum up.",
+    observation: "The total surface area is 2πr² + 2πrh.",
+    result: "The formula SA = 2πr(r+h) is verified."
   },
   {
-    title: "Archimedes' Principle",
-    aim: "To verify Archimedes' Principle.",
-    apparatus: "Beaker, Water, Spring Balance, Object",
-    procedure: "1. Weigh object in air.\n2. Submerge in water and measure new weight.\n3. Compare with displaced water weight.",
-    observation: "Buoyant force equals displaced water weight.",
-    result: "Archimedes' Principle is verified."
+    title: "Fibonacci Sequence in Nature",
+    aim: "To observe the Fibonacci sequence in real life.",
+    apparatus: "Sunflower, Pineapple, Pine cone",
+    procedure: "1. Observe the spirals in a sunflower head.\n2. Count the spirals in both directions.\n3. Verify the numbers belong to the Fibonacci sequence.",
+    observation: "The spiral counts are Fibonacci numbers.",
+    result: "Fibonacci sequence is found in natural patterns."
   }
 ];
 
-const Physics = () => {
+const Mathematics = () => {
   const [selectedExperiment, setSelectedExperiment] = useState(null);
 
   const toggleExperiment = (index) => {
@@ -52,27 +52,28 @@ const Physics = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-cyan-400 p-10 pt-20">
-      <h1 className="text-4xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
-        Physics Experiments
+    <div className="min-h-screen bg-gradient-to-b from-black-900 to-black-900 text-black-400 p-10 pt-20">
+      <h1 className="text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-pink-300">
+        Mathematics Experiments
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {physicsExperiments.map((experiment, index) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        {mathExperiments.map((experiment, index) => (
           <div 
             key={index} 
             className="bg-gray-800 p-6 rounded-xl shadow-lg cursor-pointer hover:scale-105 transition-transform"
             onClick={() => toggleExperiment(index)}
           >
-            <h2 className="text-2xl font-semibold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-blue-400">
+            <h2 className="text-2xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-300 to-pink-300">
               {experiment.title}
             </h2>
             {selectedExperiment === index && (
               <div className="mt-4 text-white">
-                <p><strong className="text-cyan-300">Aim:</strong> {experiment.aim}</p>
-                <p><strong className="text-cyan-300">Apparatus:</strong> {experiment.apparatus}</p>
-                <p><strong className="text-cyan-300">Procedure:</strong> {experiment.procedure}</p>
-                <p><strong className="text-cyan-300">Observation:</strong> {experiment.observation}</p>
-                <p><strong className="text-cyan-300">Result:</strong> {experiment.result}</p>
+                <p><strong className="text-red-300">Aim:</strong> {experiment.aim}</p>
+                <p><strong className="text-red-300">Apparatus:</strong> {experiment.apparatus}</p>
+                <p><strong className="text-red-300">Procedure:</strong></p>
+                <p className="whitespace-pre-line">{experiment.procedure}</p>
+                <p><strong className="text-red-300">Observation:</strong> {experiment.observation}</p>
+                <p><strong className="text-red-300">Result:</strong> {experiment.result}</p>
               </div>
             )}
           </div>
@@ -81,5 +82,4 @@ const Physics = () => {
     </div>
   );
 };
-
-export default Physics;
+export default Mathematics;
